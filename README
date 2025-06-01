@@ -1,6 +1,6 @@
 Tugas Akhir Mata Kuliah Pemrograman Terstruktur
 
-**SiMars – Sistem Manajemen Rumah Sakit**
+SiMars – Sistem Manajemen Rumah Sakit
 Created: Mei 2025
 Team RARA (Reval, Alya, Restu, Arsya)
 
@@ -19,7 +19,7 @@ permanen.
 ⚙️ Proses Pasien Secara FIFO (Queue)
 📚 Riwayat Pasien Terproses (LIFO/Stack)
 🔍 Cari Pasien Berdasarkan ID (Binary Search)
-📊 Statistik Usia Pasien (Rata-rata, Termuda, Tertua)
+📊 Statistik Rumah Sakit (Rata-rata, Termuda, Tertua, Pengunjung)
 ✏️ Edit Data Pasien (Update)
 ❌ Hapus Data Pasien (Delete)
 💾 Simpan & Baca Data ke/dari File (Persistence)
