@@ -1,0 +1,48 @@
+Tugas Akhir Mata Kuliah Pemrograman Terstruktur
+
+**SiMars – Sistem Manajemen Rumah Sakit**
+Created: Mei 2025
+Team RARA (Reval, Alya, Restu, Arsya)
+
+Pendahuluan
+  SiMars adalah sistem informasi berbasis terminal yang dirancang untuk membantu pengelolaan data
+pasien di rumah sakit  secara sederhana  namun fungsional. Aplikasi ini  dikembangkan menggunakan 
+bahasa  C++ dengan  dukungan library ncurses untuk  tampilan antarmuka berbasis teks  interaktif.
+
+  SiMars memanfaatkan berbagai konsep dasar  pemrograman seperti array  dinamis (vector), antrian 
+(FIFO), stack  (LIFO), serta  pencarian biner  dan manipulasi berkas untuk  menyimpan data secara 
+permanen.
+
+🎯 Fitur Utama
+📥 Tambah Pasien Baru (Create)
+📄 Lihat Antrian Pasien (Read)
+⚙️ Proses Pasien Secara FIFO (Queue)
+📚 Riwayat Pasien Terproses (LIFO/Stack)
+🔍 Cari Pasien Berdasarkan ID (Binary Search)
+📊 Statistik Usia Pasien (Rata-rata, Termuda, Tertua)
+✏️ Edit Data Pasien (Update)
+❌ Hapus Data Pasien (Delete)
+💾 Simpan & Baca Data ke/dari File (Persistence)
+✅ Validasi Nama & Umur agar data tetap bersih
+🎨 Tampilan Lebih Rapi dengan tabulasi, garis, dan penomoran
+
+Teknologi & Tools
+Bahasa: C++
+Library Tambahan:
+  <ncurses> – untuk tampilan berbasis teks yang interaktif
+  <vector>, <queue>, <stack>, <fstream>, <cstring> – untuk logika data dan I/O
+  <algorithm> – pencarian dan pengurutan
+  <iomanip> – format output yang rapi
+
+Penutup
+  Proyek SiMars ini dikembangkan tidak hanya untuk memenuhi  tugas akhir mata kuliah, tetapi juga 
+sebagai media pembelajaran dalam memahami logika  pemrograman secara nyata  dan terstruktur. Kami 
+membuka ruang untuk masukan dan saran demi pengembangan yang lebih baik di masa depan. 
+
+Terima kasih telah mengunjungi repositori ini! 🙌
+
+Information Systems
+Faculty of Mathematics and Natural Science
+University of Lampung – 2025
+
+- revawldo
