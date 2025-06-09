@@ -1,25 +1,25 @@
 Tugas Akhir Mata Kuliah Pemrograman Terstruktur
 
-SiMars – Sistem Manajemen Rumah Sakit
+SiMamas – Sistem Manajemen Puskesmas
 Created: Mei 2025
 Team RARA (Reval, Alya, Restu, Arsya)
 
 Pendahuluan
-  SiMars adalah sistem informasi berbasis terminal yang dirancang untuk membantu pengelolaan data
-pasien di rumah sakit  secara sederhana  namun fungsional. Aplikasi ini  dikembangkan menggunakan 
-bahasa  C++ dengan  dukungan library ncurses untuk  tampilan antarmuka berbasis teks  interaktif.
+  SiMamas adalah sistem informasi berbasis terminal yang dirancang untuk membantu pengelolaan data
+pasien  di puskesmas  secara sederhana  namun  fungsional. Program  ini  dikembangkan  menggunakan 
+bahasa  C++.
 
-  SiMars memanfaatkan berbagai konsep dasar  pemrograman seperti array  dinamis (vector), antrian 
-(FIFO), stack  (LIFO), serta  pencarian biner  dan manipulasi berkas untuk  menyimpan data secara 
+  SiMamas  memanfaatkan berbagai konsep dasar  pemrograman seperti array dinamis (vector), antrian 
+(FIFO), stack  (LIFO), serta  pencarian  biner  dan manipulasi berkas untuk  menyimpan data secara 
 permanen.
 
-🎯 Fitur Utama
+🎯 Fitur Utama SiMars
 📥 Tambah Pasien Baru (Create)
 📄 Lihat Antrian Pasien (Read)
-⚙️ Proses Pasien Secara FIFO (Queue)
+⚙️ Proses Pasien (FIFO/Queue)
 📚 Riwayat Pasien Terproses (LIFO/Stack)
 🔍 Cari Pasien Berdasarkan ID (Binary Search)
-📊 Statistik Rumah Sakit (Rata-rata, Termuda, Tertua, Pengunjung)
+📊 Statistik Puskesmas (Rata-rata, Termuda, Tertua, Pengunjung)
 ✏️ Edit Data Pasien (Update)
 ❌ Hapus Data Pasien (Delete)
 💾 Simpan & Baca Data ke/dari File (Persistence)
@@ -29,17 +29,16 @@ permanen.
 Teknologi & Tools
 Bahasa: C++
 Library Tambahan:
-  <ncurses> – untuk tampilan berbasis teks yang interaktif
-  <vector>, <queue>, <stack>, <fstream>, <cstring> – untuk logika data dan I/O
+  <vector>, <queue>, <stack>, <fstream>, <cstring> – untuk manajemen data dan I/O
   <algorithm> – pencarian dan pengurutan
   <iomanip> – format output yang rapi
 
 Penutup
-  Proyek SiMars ini dikembangkan tidak hanya untuk memenuhi  tugas akhir mata kuliah, tetapi juga 
-sebagai media pembelajaran dalam memahami logika  pemrograman secara nyata  dan terstruktur. Kami 
-membuka ruang untuk masukan dan saran demi pengembangan yang lebih baik di masa depan. 
+  Proyek SiMamas ini dikembangkan tidak  hanya untuk memenuhi tugas akhir mata kuliah, tetapi juga 
+sebagai media  pembelajaran dalam  memahami logika  pemrograman secara terstruktur. Kami  menerima 
+semua masukan dan saran untuk pengembangan yang lebih baik. 
 
-Terima kasih telah mengunjungi repositori ini! 🙌
+Terima kasih telah mampir di repositori ini! 🙌
 
 Information Systems
 Faculty of Mathematics and Natural Science
