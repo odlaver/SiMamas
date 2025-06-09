@@ -43,3 +43,23 @@ public:
         system("cls"); 
         #endif
     }
+
+    void bacaKeluhanSaran() {
+        ifstream file("keluhan_saran.txt");
+        if (!file) {
+            cout << "\nGagal membuka file keluhan_saran.txt\n";
+            return;
+        }
+
+        string line;
+        while (getline(file, line)) {
+            size_t pos = line.find("|"); 
+            if (pos != string::npos) {
+                string keluhan = line.substr(0, pos);
+                string saran = line.substr(pos + 1);
+                transform(keluhan.begin(), keluhan.end(), keluhan.begin(), ::tolower);
+                keluhanSaranMap[keluhan] = saran; 
+            }
+        }
+        file.close();
+    }
