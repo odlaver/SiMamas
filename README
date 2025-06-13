@@ -1,7 +1,7 @@
 Tugas Akhir Mata Kuliah Pemrograman Terstruktur
 
 SiMamas – Sistem Manajemen Puskesmas
-Created: Mei 2025
+Created: Juni 2025
 Team RARA (Reval, Alya, Restu, Arsya)
 
 Pendahuluan
@@ -10,8 +10,8 @@ pasien  di puskesmas  secara sederhana  namun  fungsional. Program  ini  dikemba
 bahasa  C++.
 
   SiMamas  memanfaatkan berbagai konsep dasar  pemrograman seperti array dinamis (vector), antrian 
-(FIFO), stack  (LIFO), serta  pencarian  biner  dan manipulasi berkas untuk  menyimpan data secara 
-permanen.
+(FIFO), stack  (LIFO), map,  set, serta  pencarian  biner  dan  manipulasi berkas untuk  menyimpan 
+data secara permanen.
 
 🎯 Fitur Utama SiMars
 📥 Tambah Pasien Baru (Create)
@@ -32,6 +32,7 @@ Library Tambahan:
   <vector>, <queue>, <stack>, <fstream>, <cstring> – untuk manajemen data dan I/O
   <algorithm> – pencarian dan pengurutan
   <iomanip> – format output yang rapi
+  <unordered_map>, <unordered_set> – untuk penyimpanan data menggunakan struktur map dan set
 
 Penutup
   Proyek SiMamas ini dikembangkan tidak  hanya untuk memenuhi tugas akhir mata kuliah, tetapi juga 
