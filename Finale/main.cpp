@@ -19,7 +19,6 @@ int main() {
         cout << "8. Statistik Puskesmas\n";
         cout << "9. Keluar\n";
         cout << "Pilih opsi (1-9): ";
-        cin >> pilihan;
 
         while (!(cin >> pilihan) || pilihan < 1 || pilihan > 9) {
             cout << "\nOpsi tidak valid.\n";
