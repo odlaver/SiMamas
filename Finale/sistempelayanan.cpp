@@ -209,3 +209,127 @@ void SistemPelayanan::cariPasien() {
         cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
     }
 }
+
+void SistemPelayanan::editPasien() {
+    clearScreen();
+
+    int id;
+    cout << "\n=== Edit Data Pasien ===\n";
+    cout << "Masukkan ID pasien yang ingin diedit: ";
+    cin >> id;
+
+    bool ditemukan = false;
+
+    for (auto &p : dataPasien) {
+        if (p.id == id) {
+            ditemukan = true;
+            cout << "\nData ditemukan. Masukkan data baru:\n";
+
+            cin.ignore();
+
+            cout << "Nama baru: ";
+            cin.getline(p.nama, 50);
+
+            while (true) {
+                cout << "Umur baru: ";
+                cin >> p.umur;
+                if (validasiUmur(p.umur)) {
+                    break;
+                }
+                cout << "Umur tidak valid. Masukkan umur yang lebih jelas (0-120): ";
+            }
+            cin.ignore();
+            break;
+        }
+    }
+
+    if (!ditemukan) {
+        cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
+    }
+}
+
+void SistemPelayanan::hapusPasien() {
+    clearScreen();
+
+    int id;
+    cout << "\n=== Hapus Data Pasien ===\n";
+    cout << "Masukkan ID pasien yang mau dihapus: ";
+    cin >> id;
+
+    bool ditemukan = false;
+
+    for (auto it = dataPasien.begin(); it != dataPasien.end(); ++it) {
+        if (it->id == id) {
+            ditemukan = true;
+            cout << "\nPasien ditemukan:\n";
+            cout << "ID: " << it->id << ", Nama: " << it->nama << "\n";
+
+            char konfirmasi;
+            cout << "Yakin ingin menghapus pasien ini? (y/n): ";
+            cin >> konfirmasi;
+
+            if (konfirmasi == 'y' || konfirmasi == 'Y') {
+                dataPasien.erase(it);
+                cout << "Data pasien berhasil dihapus.\n";
+            } else {
+                cout << "Dibatalkan.\n";
+            }
+
+            break;
+        }
+    }
+
+    queue<Pasien> temp;
+    while (!antrianPasien.empty()) {
+        clearScreen();
+        Pasien p = antrianPasien.front();
+        antrianPasien.pop();
+        if (p.id != id) {
+            temp.push(p);
+        }
+    }
+    antrianPasien = temp;
+
+    if (!ditemukan) {
+        cout << "\nPasien tidak ditemukan.\n";
+    }
+}
+
+void SistemPelayanan::statistikPuskes() {
+    clearScreen();
+
+    if (dataPasien.empty()) {
+        cout << "\nBelum ada pasien terdaftar.\n";
+        return;
+    }
+
+    int totalUmur = 0;
+    int termuda = dataPasien.front().umur;
+    int jumlahPasien = dataPasien.size();
+    for (const Pasien& p : dataPasien) {
+        totalUmur += p.umur;
+        if (p.umur < termuda) {
+            termuda = p.umur;
+        }
+    }
+
+    int rataRataUmur = static_cast<int>(totalUmur) / jumlahPasien;
+
+    cout << "\n=== Statistik Puskesmas ===\n";
+    cout << "Jumlah pasien terdaftar: " << jumlahPasien << "\n";
+    cout << "Rata-rata umur pasien: " << fixed << setprecision(2) << rataRataUmur << " tahun\n";
+    cout << "Pasien termuda: " << termuda << " tahun\n";
+}
+
+bool SistemPelayanan::validasiUmur(int umur) {
+    if (umur < 0 || umur > 120) {
+        return false;
+    }
+    return true;
+}
+
+void SistemPelayanan::clearScreen() {
+    #ifdef _WIN32
+    system("cls");
+    #endif
+}
