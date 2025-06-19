@@ -1,0 +1,4 @@
+Untuk menjalankan program secara manual, berikut contoh perintah compilenya:
+    g++ main.cpp sistempelayanan.cpp -o run
+
+Setelah program dicompile, lakukan perintah .\run dan program akan dimulai. Selamat mencoba ^^
