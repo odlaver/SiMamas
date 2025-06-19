@@ -1,8 +1,7 @@
-#include "SistemPelayanan.h"
+#include "sistempelayanan.h"
 #include <unistd.h>
 
 int main() {
-    
     SistemPelayanan sistem;
     sistem.clearScreen();
 
@@ -19,13 +18,7 @@ int main() {
         cout << "8. Statistik Puskesmas\n";
         cout << "9. Keluar\n";
         cout << "Pilih opsi (1-9): ";
-
-        while (!(cin >> pilihan) || pilihan < 1 || pilihan > 9) {
-            cout << "\nOpsi tidak valid.\n";
-            cout << "Silakan pilih opsi yang tersedia (1-9): ";
-            cin.clear(); 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+        cin >> pilihan;
 
         switch (pilihan) {
             case 1:
