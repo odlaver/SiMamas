@@ -1,0 +1,48 @@
+kepala|Istirahat, minum banyak air, dan kompres dingin. Gunakan Paracetamol atau Ibuprofen jika diperlukan.
+
+batuk|Minum madu hangat, beristirahat, dan gunakan Dextromethorphan atau Guaifenesin.
+
+demam|Gunakan Paracetamol atau Ibuprofen. Perbanyak cairan dan istirahat.
+
+pilek|Gunakan semprotan saline, konsumsi C-1000, dan banyak minum cairan hangat.
+
+nyeri|Gunakan Paracetamol atau Ibuprofen. Hindari aktivitas berat.
+
+mual|Minum air jahe hangat, konsumsi Antasida jika mual berlanjut.
+
+pusing|Istirahat sejenak, minum air, dan makan ringan. Konsumsi Paracetamol jika perlu.
+
+sesak napas|Gunakan Salbutamol Inhaler. Perbanyak cairan dan beristirahat.
+
+batuk berdarah|Hentikan berbicara berlebihan, gunakan Dextromethorphan, dan istirahat.
+
+perut|Cobalah konsumsi Antasida atau Simethicone. Hindari makanan berat atau pedas.
+
+ruam kulit|Gunakan salep Hidrokortison untuk mengurangi peradangan atau gatal.
+
+gangguan pencernaan|Konsumsi Antasida atau Omeprazole untuk meredakan perasaan penuh atau asam lambung.
+
+gatal|Gunakan salep Hidrokortison atau Calamine Lotion untuk mengurangi gatal.
+
+kram|Gunakan Ibruprofen atau Kapsaisin Cream untuk meredakan kram.
+
+stress|Cobalah Lavender Oil atau Melatonin untuk tidur lebih baik.
+
+sakit gigi|Kumur dengan air garam hangat atau gunakan Paracetamol untuk mengurangi rasa sakit.
+
+sakit tenggorokan|Minum teh hangat dengan madu atau gunakan Lozenge untuk meredakan iritasi tenggorokan.
+
+insomnia|Gunakan Melatonin atau Valerian Root sebagai suplemen tidur alami.
+
+sariawan|Gunakan obat sariawan seperti Betadine atau salep Tetrahydrozoline. Kumur dengan air garam hangat.
+
+gondongan|Istirahat yang cukup dan konsumsi Paracetamol untuk meredakan nyeri. Minum cairan hangat secara teratur.
+
+flu|Gunakan Paracetamol untuk meredakan demam dan nyeri. Perbanyak konsumsi C-1000 untuk meningkatkan daya tahan tubuh.
+
+panu|Gunakan salep antijamur seperti Clotrimazole atau Ketoconazole.
+
+tetanus|Segera dapatkan suntikan antitetanus jika terluka dengan benda berkarat atau tajam.
+
+maag|Konsumsi Omeprazole atau Antasida untuk mengurangi asam lambung dan nyeri.
+

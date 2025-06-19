@@ -1,16 +1,16 @@
-#ifndef SISTEMPELAYANAN_H
-#define SISTEMPELAYANAN_H
+#ifndef HEADER_H
+#define HEADER_H
 
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <stack>
 #include <unordered_map>
 #include <unordered_set>
+#include <stack>
 #include <fstream>
 #include <cstring>
 #include <algorithm>
-#include <unistd.h> 
+#include <unistd.h>
 
 using namespace std;
 
@@ -22,23 +22,7 @@ struct Pasien {
 };
 
 template <typename T>
-bool cariPasienBinary(const vector<T>& data, int idCari) {
-    int kiri = 0;
-    int kanan = data.size() - 1;
-
-    while (kiri <= kanan) {
-        int tengah = kiri + (kanan - kiri) / 2;
-
-        if (data[tengah].id == idCari)
-            return true;
-        else if (data[tengah].id < idCari)
-            kiri = tengah + 1;
-        else
-            kanan = tengah - 1;
-    }
-
-    return false;
-}
+bool cariPasienBinary(const vector<T>& data, int idCari);
 
 class SistemPelayanan {
 private:
@@ -46,7 +30,7 @@ private:
     queue<Pasien> antrianPasien;
     stack<Pasien> riwayatPasien;
 
-    int nextID = 1; 
+    int nextID = 1;
     unordered_map<string, string> keluhanSaranMap;
 
 public:
@@ -58,6 +42,7 @@ public:
     void bacaKeluhanSaran();
     void bacaRiwayat();
     void simpanRiwayat();
+
     void daftar();
     void lihatAntrian();
     void prosesPasien();
@@ -66,6 +51,7 @@ public:
     void editPasien();
     void hapusPasien();
     void statistikPuskes();
+    
     bool validasiUmur(int umur);
     void clearScreen();
 };

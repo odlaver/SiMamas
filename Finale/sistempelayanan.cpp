@@ -15,7 +15,7 @@ SistemPelayanan::~SistemPelayanan() {
 void SistemPelayanan::bacaLastID() {
     ifstream file("last_id.txt");
     if (file) {
-        file >> nextID; 
+        file >> nextID;
     } else {
         nextID = 1;
     }
@@ -37,12 +37,12 @@ void SistemPelayanan::bacaKeluhanSaran() {
 
     string line;
     while (getline(file, line)) {
-        size_t pos = line.find("|");
+        size_t pos = line.find("|"); 
         if (pos != string::npos) {
             string keluhan = line.substr(0, pos);
             string saran = line.substr(pos + 1);
             transform(keluhan.begin(), keluhan.end(), keluhan.begin(), ::tolower);
-            keluhanSaranMap[keluhan] = saran;
+            keluhanSaranMap[keluhan] = saran; 
         }
     }
     file.close();
@@ -85,7 +85,7 @@ void SistemPelayanan::daftar() {
     cout << "\n=== Formulir Pendaftaran Pasien ===\n";
 
     cout << "Namanya siapa: ";
-    cin.ignore();
+    cin.ignore(); 
     while (true) {
         cin.getline(p.nama, 50);
         if (strlen(p.nama) > 0) break;
@@ -99,7 +99,7 @@ void SistemPelayanan::daftar() {
         cout << "Umur tidak valid. Masukkan umur yang lebih jelas: ";
     }
 
-    cin.ignore();
+    cin.ignore(); 
 
     cout << "Keluhannya apa: ";
     cin.getline(p.keluhan, 100);
@@ -151,38 +151,44 @@ void SistemPelayanan::prosesPasien() {
         cout << "Kami sarankan untuk segera ke rumah sakit untuk penanganan keluhan ini.\n";
     }
 
-    riwayatPasien.push(p);
-    simpanRiwayat();
+    ofstream file("riwayat_pasien.txt", ios::app);
+    file << p.id << "\n";
+    file << p.nama << "\n";
+    file << p.umur << "\n";
+    file << p.keluhan << "\n";
+    file.close();
 }
+
 
 void SistemPelayanan::riwayatPelayanan() {
     clearScreen();
-    bacaRiwayat();
-    unordered_set<int> riwayatSet;
-    if (riwayatPasien.empty()) {
-        cout << "\nTidak ada pasien yang telah diproses.\n";
+    ifstream file("riwayat_pasien.txt");
+
+    if (!file) {
+        cout << "\nTidak ada riwayat pasien yang tersimpan.\n";
         return;
     }
 
+    Pasien p;
     cout << "\n=== Riwayat Pelayanan Pasien ===\n";
 
-    stack<Pasien> temp = riwayatPasien;
-    
-    while (!temp.empty()) {
-        Pasien p = temp.top();
-        temp.pop();
+    while (file >> p.id) {
+        file.ignore();
+        file.getline(p.nama, 50);
+        file >> p.umur;
+        file.ignore();
+        file.getline(p.keluhan, 100);
 
-        if (riwayatSet.find(p.id) == riwayatSet.end()) {
-            riwayatSet.insert(p.id);
-            cout << "\nID: " << p.id << "\n";
-            cout << "Nama: " << p.nama << "\n";
-            cout << "Umur: " << p.umur << " tahun\n";
-            cout << "Keluhan: " << p.keluhan << "\n";
-            cout << "Status: Sudah Diproses\n";
-            cout << "=====================================\n";
-        }
+        cout << "\nID: " << p.id << "\n";
+        cout << "Nama: " << p.nama << "\n";
+        cout << "Umur: " << p.umur << " tahun\n";
+        cout << "Keluhan: " << p.keluhan << "\n";
+        cout << "------------------------------------\n";
     }
+
+    file.close();
 }
+
 
 void SistemPelayanan::cariPasien() {
     clearScreen();
@@ -190,63 +196,93 @@ void SistemPelayanan::cariPasien() {
     cout << "\nMasukkan ID pasien yang ingin dicari: ";
     cin >> id;
 
-    sort(dataPasien.begin(), dataPasien.end(), [](const Pasien& a, const Pasien& b) {
-        return a.id < b.id;
-    });
-
-    if (cariPasienBinary(dataPasien, id)) {
-        cout << "\n=== Data Pasien Ditemukan ===\n";
-        for (const auto& p : dataPasien) {
-            if (p.id == id) {
-                cout << "ID: " << p.id << "\n";
-                cout << "Nama: " << p.nama << "\n";
-                cout << "Umur: " << p.umur << " tahun\n";
-                cout << "Keluhan: " << p.keluhan << "\n";
-                break;
-            }
-        }
-    } else {
-        cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
-    }
-}
-
-void SistemPelayanan::editPasien() {
-    clearScreen();
-
-    int id;
-    cout << "\n=== Edit Data Pasien ===\n";
-    cout << "Masukkan ID pasien yang ingin diedit: ";
-    cin >> id;
-
     bool ditemukan = false;
+    ifstream file("riwayat_pasien.txt");
 
-    for (auto &p : dataPasien) {
+    if (!file) {
+        cout << "\nGagal membuka file riwayat_pasien.txt\n";
+        return;
+    }
+
+    Pasien p;
+    while (file >> p.id) {
+        file.ignore(); 
+        file.getline(p.nama, 50);
+        file >> p.umur;
+        file.ignore();
+        file.getline(p.keluhan, 100);
+
         if (p.id == id) {
             ditemukan = true;
-            cout << "\nData ditemukan. Masukkan data baru:\n";
-
-            cin.ignore();
-
-            cout << "Nama baru: ";
-            cin.getline(p.nama, 50);
-
-            while (true) {
-                cout << "Umur baru: ";
-                cin >> p.umur;
-                if (validasiUmur(p.umur)) {
-                    break;
-                }
-                cout << "Umur tidak valid. Masukkan umur yang lebih jelas (0-120): ";
-            }
-            cin.ignore();
+            cout << "\n=== Data Pasien Ditemukan ===\n";
+            cout << "ID: " << p.id << "\n";
+            cout << "Nama: " << p.nama << "\n";
+            cout << "Umur: " << p.umur << " tahun\n";
+            cout << "Keluhan: " << p.keluhan << "\n";
             break;
         }
     }
 
     if (!ditemukan) {
-        cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
+        cout << "\nPasien dengan ID " << id << " tidak ditemukan dalam riwayat.\n";
     }
+
+    file.close();
 }
+
+    void SistemPelayanan::editPasien() {
+        clearScreen();
+
+        int id;
+        cout << "\n=== Edit Data Pasien ===\n";
+        cout << "Masukkan ID pasien yang ingin diedit: ";
+        cin >> id;
+
+        bool ditemukan = false;
+        ifstream file("riwayat_pasien.txt");
+        ofstream tempFile("temp_riwayat_pasien.txt", ios::app);
+
+        if (!file) {
+            cout << "\nGagal membuka file riwayat_pasien.txt\n";
+            return;
+        }
+
+        Pasien p;
+        while (file >> p.id) {
+            file.ignore();
+            file.getline(p.nama, 50);
+            file >> p.umur;
+            file.ignore();
+            file.getline(p.keluhan, 100);
+
+            if (p.id == id) {
+                ditemukan = true;
+                cout << "\nData ditemukan. Masukkan data baru:\n";
+
+                cin.ignore();
+
+                cout << "Nama baru: ";
+                cin.getline(p.nama, 50);
+            }
+            tempFile << p.id << "\n";
+            tempFile << p.nama << "\n";
+            tempFile << p.umur << "\n";
+            tempFile << p.keluhan << "\n";
+        }
+
+        file.close();
+        tempFile.close();
+
+        remove("riwayat_pasien.txt");
+        rename("temp_riwayat_pasien.txt", "riwayat_pasien.txt");
+
+        if (!ditemukan) {
+            cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
+        } else {
+            cout << "\nData pasien berhasil diperbarui.\n";
+        }
+    }
+
 
 void SistemPelayanan::hapusPasien() {
     clearScreen();
@@ -257,69 +293,100 @@ void SistemPelayanan::hapusPasien() {
     cin >> id;
 
     bool ditemukan = false;
+    ifstream file("riwayat_pasien.txt");
+    ofstream tempFile("temp_riwayat_pasien.txt", ios::app); 
 
-    for (auto it = dataPasien.begin(); it != dataPasien.end(); ++it) {
-        if (it->id == id) {
+    if (!file) {
+        cout << "\nGagal membuka file riwayat_pasien.txt\n";
+        return;
+    }
+
+    Pasien p;
+    while (file >> p.id) {
+        file.ignore(); 
+        file.getline(p.nama, 50);
+        file >> p.umur;
+        file.ignore();
+        file.getline(p.keluhan, 100);
+
+        if (p.id == id) {
             ditemukan = true;
             cout << "\nPasien ditemukan:\n";
-            cout << "ID: " << it->id << ", Nama: " << it->nama << "\n";
-
+            cout << "ID: " << p.id << ", Nama: " << p.nama << "\n";
             char konfirmasi;
             cout << "Yakin ingin menghapus pasien ini? (y/n): ";
             cin >> konfirmasi;
 
             if (konfirmasi == 'y' || konfirmasi == 'Y') {
-                dataPasien.erase(it);
                 cout << "Data pasien berhasil dihapus.\n";
+                continue;  
             } else {
-                cout << "Dibatalkan.\n";
+                tempFile << p.id << "\n";
+                tempFile << p.nama << "\n";
+                tempFile << p.umur << "\n";
+                tempFile << p.keluhan << "\n";
             }
-
-            break;
+        } else {
+            tempFile << p.id << "\n";
+            tempFile << p.nama << "\n";
+            tempFile << p.umur << "\n";
+            tempFile << p.keluhan << "\n";
         }
     }
 
-    queue<Pasien> temp;
-    while (!antrianPasien.empty()) {
-        clearScreen();
-        Pasien p = antrianPasien.front();
-        antrianPasien.pop();
-        if (p.id != id) {
-            temp.push(p);
-        }
-    }
-    antrianPasien = temp;
+    file.close();
+    tempFile.close();
 
     if (!ditemukan) {
-        cout << "\nPasien tidak ditemukan.\n";
+        cout << "\nPasien dengan ID " << id << " tidak ditemukan.\n";
+    } else {
+        remove("riwayat_pasien.txt"); 
+        rename("temp_riwayat_pasien.txt", "riwayat_pasien.txt");
     }
 }
 
 void SistemPelayanan::statistikPuskes() {
     clearScreen();
+    ifstream file("riwayat_pasien.txt");
 
-    if (dataPasien.empty()) {
+    if (!file) {
         cout << "\nBelum ada pasien terdaftar.\n";
         return;
     }
 
     int totalUmur = 0;
-    int termuda = dataPasien.front().umur;
-    int jumlahPasien = dataPasien.size();
-    for (const Pasien& p : dataPasien) {
+    int termuda = 120;
+    int jumlahPasien = 0;
+
+    Pasien p;
+    while (file >> p.id) {
+        file.ignore();
+        file.getline(p.nama, 50);
+        file >> p.umur;
+        file.ignore(); 
+        file.getline(p.keluhan, 100);
+
         totalUmur += p.umur;
         if (p.umur < termuda) {
             termuda = p.umur;
         }
+        jumlahPasien++;
     }
 
-    int rataRataUmur = static_cast<int>(totalUmur) / jumlahPasien;
+    file.close();
 
+    if (jumlahPasien == 0) {
+        cout << "\nTidak ada pasien yang diproses.\n";
+        return;
+    }
+
+    int rataRataUmur = totalUmur / jumlahPasien;
     cout << "\n=== Statistik Puskesmas ===\n";
     cout << "Jumlah pasien terdaftar: " << jumlahPasien << "\n";
     cout << "Rata-rata umur pasien: " << fixed << setprecision(2) << rataRataUmur << " tahun\n";
     cout << "Pasien termuda: " << termuda << " tahun\n";
 }
+
 
 bool SistemPelayanan::validasiUmur(int umur) {
     if (umur < 0 || umur > 120) {
@@ -330,6 +397,6 @@ bool SistemPelayanan::validasiUmur(int umur) {
 
 void SistemPelayanan::clearScreen() {
     #ifdef _WIN32
-    system("cls");
+    system("cls"); 
     #endif
 }
