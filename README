@@ -13,7 +13,7 @@ bahasa  C++.
 (FIFO), stack  (LIFO), map,  set, serta  pencarian  biner  dan  manipulasi berkas untuk  menyimpan 
 data secara permanen.
 
-🎯 Fitur Utama SiMars
+🎯 Fitur Utama SiMamas
 📥 Tambah Pasien Baru (Create)
 📄 Lihat Antrian Pasien (Read)
 ⚙️ Proses Pasien (FIFO/Queue)
